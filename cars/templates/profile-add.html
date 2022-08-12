@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body_block%}
+<div class="container-lg px-4 mt-5">
+    <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="row">
+
+            <!-- ACCOUNT IMAGE-->
+            <div class="col-lg-4">
+                <div class="card mx-4">
+                    <div class="card-header py-3">Profile picture</div>
+                    <div class="card-body text-center">
+                        <img src="{% static 'assets/images.png' %}" alt="" class="rounded-circle profile-avatar my-4">
+                        <div>
+                            <label for="id_profile_pic" class="profile-image-label mb-2">
+                                <i class="fa-solid fa-upload pe-2"></i>Profile Picture
+                            </label>
+                            <input type="file" class="d-none" name="profile_pic" id="id_profile_pic">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  ACCOUNT DETAILS-->
+            <div class="col-lg-8">
+                <div class="card mx-4">
+                    <div class="card-header py-3">Fill all blanks</div>
+                    <div class="card-body px-5">
+                        <div class="mb-4 mt-3 ">
+                            <label for="id_phone" class="text-capitalize mb-1">Mobile number *</label>
+                            <input type="text" name="phone" id="id_phone" class="form-control">
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_place" class="text-capitalize mb-1">Place *</label>
+                            <input type="text" name="place" id="id_place" class="form-control">
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_pin" class="text-capitalize mb-1">Pin code *</label>
+                            <input type="number" name="pin" id="id_pin" class="form-control">
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_gender" class="text-capitalize mb-1">gender *</label>
+                            <select name="gender" id="id_gender" class="form-control">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4 text-center">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

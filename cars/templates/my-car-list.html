@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container-lg">
+    {%if my_car_list%}
+    {%for cars in my_car_list%}
+    <div class="row my-5">
+
+<!--        If current user have any cars to sell then it will show here-->
+        <div class="col-md-6">
+            <div class="text-center">
+                <img src="{{cars.car_image.url}}" alt="" style="height: 300px">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-borderless table-hover">
+                <tr>
+                    <th>Car name</th>
+                    <td>{{cars.name}}</td>
+                </tr>
+
+                <tr>
+                    <th>Company</th>
+                    <td>{{cars.company}}</td>
+                </tr>
+
+                <tr>
+                    <th>Color</th>
+                    <td>{{cars.color}}</td>
+                </tr>
+
+                <tr>
+                    <th>Price</th>
+                    <td>{{cars.prize}}</td>
+                </tr>
+
+                <tr>
+                    <th>Model year</th>
+                    <td>{{cars.year}}</td>
+                </tr>
+
+                <tr>
+                    <th>Fuel type</th>
+                    <td>{{cars.fuel_type}}</td>
+                </tr>
+
+                <tr>
+                    <th>Reason</th>
+                    <td>{{cars.reason}}</td>
+                </tr>
+            </table>
+
+            <div class="text-center mt-4 mb-5">
+                <a href="{%url 'update-car-details' cars.id%}" class="btn btn-primary">update</a>
+                <a href="{%url 'remove-car' cars.id%}" class="btn btn-primary">delete</a>
+            </div>
+        </div>
+        {%endfor%}
+        {%else%}
+
+<!--        If there is no cars for current user to sell , then this code will work-->
+        <div class="mt-5">
+            <small>you dont have any car to sell </small><a href="{% url 'sell-car' %}" class="btn btn-primary">Sell now</a>
+        </div>
+
+    </div>
+    {%endif%}
+</div>
+
+{%endblock%}

@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* HOME PAGE*/
+.background{
+    background-image: url('/static/assets/background.jpg');
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    height: 100vh;
+}
+.home-content{
+    padding-top: 150px;
+    text-align: center;
+}
+.home-heading{
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 10px;
+    font-weight: 700;
+}
+.home-text{
+color: white;
+font-size: 18px;
+}
+.home-button{
+    padding: 5px 14px;
+    margin: 35px 10px;
+    text-transform: capitalize;
+}
+
+/* ADD PROFILE*/
+.profile-avatar{
+    border-radius: 50%;
+}
+.profile-image-label{
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 7px;
+    background-color: #0d6efd;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.card{
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+
+/* VIEW PROFILE */
+
+.profile-img{
+    height: 31vh;
+    width: 100%;
+}

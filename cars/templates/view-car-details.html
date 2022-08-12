@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container-lg">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="text-center">
+                <img src="{{car_details.car_image.url}}" alt="" style="height: 300px">
+                <h3 >{{car_details.name}}</h3>
+                <p >{{car_details.prize}}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-borderless table-hover">
+                <tr>
+                    <th>Car name</th>
+                    <td>{{car_details.name}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Company</th>
+                    <td>{{car_details.company}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Color</th>
+                    <td>{{car_details.color}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Price</th>
+                    <td>{{car_details.prize}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Model year</th>
+                    <td>{{car_details.year}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Fuel type</th>
+                    <td>{{car_details.fuel_type}}</td>
+                </tr>
+
+                 <tr>
+                    <th>Reason</th>
+                    <td>{{car_details.reason}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

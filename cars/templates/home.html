@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body_block%}
+<div class="background">
+    <div class="home-content" >
+        <h1 class="home-heading">hi , {{request.user}}</h1>
+        <p class="home-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, non.</p>
+        <p class="home-text">Lorem ipsum dolor sit amet.</p>
+        <a href="{% url 'view-cars' %}"><button type="button" class="btn btn-outline-success home-button">Explore</button></a>
+        <a href="{% url 'sell-car' %}"><button type="button" class="btn btn-outline-danger home-button">Sell car</button></a>
+    </div>
+</div>
+{% endblock %}

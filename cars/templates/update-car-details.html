@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body_block%}
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="row my-5">
+            <div class="col-lg-5">
+                <div>
+                    <img src="{{cars.car_image.url}}" alt="" class="my-4 img-fluid" style="height: 40vh; width:90%">
+                </div>
+                <div class="text-center">
+                    <label for="id_car_image" class="profile-image-label mb-2">
+                        <i class="fa-solid fa-upload pe-2"></i>Select
+                    </label>
+                    <input type="file" class="d-none" name="car_image" id="id_car_image">
+                </div>
+            </div>
+            <div class="col-lg-7 shadow px-md-5">
+
+                <div class="mb-3">
+                    <label for="id_name" class="mb-1">car name*</label>
+                    <input type="text" name="name" id="id_name" class="form-control" value="{{cars.name}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_company" class="mb-1">company*</label>
+                    <input type="text" name="company" id="id_company" class="form-control" value="{{cars.company}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_color" class="mb-1">color*</label>
+                    <input type="text" name="color" id="id_color" class="form-control" value="{{cars.color}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_prize" class="mb-1">prize*</label>
+                    <input type="text" name="prize" id="id_prize" class="form-control" value="{{cars.prize}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_year" class="mb-1">year*</label>
+                    <input type="text" name="year" id="id_year" class="form-control" value="{{cars.year}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_fuel_type" class="mb-1">fuel type*</label>
+                    <input type="text" name="fuel_type" id="id_fuel_type" class="form-control"
+                           value="{{cars.fuel_type}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_reason" class="mb-1">reason*</label>
+                    <textarea name="reason" id="id_reason" cols="30" rows="2"
+                              class="form-control">{{cars.reason}}</textarea>
+                </div>
+
+                <div class="mb-4 text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

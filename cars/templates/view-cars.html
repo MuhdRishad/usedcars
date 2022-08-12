@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row mt-5">
+        {%for car in cars%}
+        <div class="col-4">
+            <div class="card text-center" style="width: 18rem;">
+                <img src="{{car.car_image.url}}" class="card-img-top" alt="..." style="height: 37vh;">
+                <div class="card-body">
+                    <h5 class="card-title">{{car.name}}</h5>
+                    <p class="card-text">{{car.prize}}</p>
+                    <p class="card-text">{{car.reason}}</p>
+                    <a href="{% url 'view-car-details' car.id %}" class="btn btn-primary">see more</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}

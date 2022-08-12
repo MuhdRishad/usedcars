@@ -1,0 +1,87 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container-lg px-4 mt-5">
+    <div class="row">
+
+        <!-- ACCOUNT IMAGE-->
+        <div class="col-lg-4">
+            <div class="card mx-4">
+                <div class="card-header py-3 text-capitalize">Profile picture</div>
+                <div class="card-body text-center">
+                    <img src="{{request.user.users.profile_pic.url}}" alt=""
+                         class="rounded-circle profile-img mt-4">
+                    <div>
+                        <h4 class="profile-username">{{request.user}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <a href="{%url 'my-cars-list'%}" class="btn btn-primary">My car lists</a>
+            </div>
+        </div>
+
+        <!--  ACCOUNT DETAILS-->
+        <div class="col-lg-8">
+            <div class="card mx-4 mb-4">
+                <div class="card-header py-3 text-capitalize">Profile</div>
+                <div class="card-body px-5">
+
+                    <div class="row mb-4 mt-3">
+                        <div class="col">
+                            <label class="text-capitalize mb-1">first name*</label>
+                            <input type="text" class="form-control" aria-label="First name"
+                                   value="{{request.user.first_name}}" readonly>
+                        </div>
+                        <div class="col">
+                            <label class="text-capitalize mb-1">last name*</label>
+                            <input type="text" class="form-control" aria-label="Last name"
+                                   value="{{request.user.last_name}}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 ">
+                        <label class="text-capitalize mb-1">username*</label>
+                        <input type="text" class="form-control" value="{{request.user}}" readonly>
+                    </div>
+
+                    <div class="mb-4 ">
+                        <label class="text-capitalize mb-1">email*</label>
+                        <input type="email" class="form-control" value="{{request.user.email}}" readonly>
+                    </div>
+
+                     <div class="row mb-4">
+                        <div class="col">
+                            <label class="text-capitalize mb-1">Pin code*</label>
+                            <input type="number" class="form-control" value="{{request.user.users.pin}}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label class="text-capitalize mb-1">gender *</label>
+                            <select class="form-control" disabled="true">
+                                <option value="male">{{request.user.users.gender}}</option>
+                                <option value="female">{{request.user.users.gender}}</option>
+                                <option value="other">{{request.user.users.gender}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 ">
+                        <label class="text-capitalize mb-1">Mobile number*</label>
+                        <input type="text" class="form-control" value="{{request.user.users.phone}}" readonly>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="text-capitalize mb-1">Place*</label>
+                        <input type="text" class="form-control" value="{{request.user.users.place}}" readonly>
+                    </div>
+
+
+                    <div class="mb-4 text-center">
+                        <a href="{% url 'profile-update' request.user.users.id %}" class="btn btn-primary text-capitalize">update profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
