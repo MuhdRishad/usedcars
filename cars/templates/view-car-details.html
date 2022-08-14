@@ -5,46 +5,58 @@
     <div class="row mt-5">
         <div class="col-md-6">
             <div class="text-center">
-                <img src="{{car_details.car_image.url}}" alt="" style="height: 300px">
-                <h3 >{{car_details.name}}</h3>
-                <p >{{car_details.prize}}</p>
+                <img src="{{car_details.car_image.url}}" alt="{{car_details.name}}" style="height: 300px" class="img-fluid">
+                <h3 class="mt-3 text-uppercase">{{car_details.name}}</h3>
+                <p ><i class="fa-solid fa-indian-rupee-sign"></i> {{car_details.prize}}</p>
             </div>
         </div>
         <div class="col-md-6">
             <table class="table table-borderless table-hover">
+                 <tr>
+                    <th class="py-3">Owner name</th>
+                    <td class="py-3 text-capitalize">{{car_details.user}}</td>
+                </tr>
                 <tr>
-                    <th>Car name</th>
-                    <td>{{car_details.name}}</td>
+                    <th class="py-3">Phone</th>
+                    <td class="py-3 text-capitalize">{{car_details.user.users.phone}}</td>
+                </tr>
+                <tr>
+                    <th class="py-3">Owner name</th>
+                    <td class="py-3 text-capitalize">{{car_details.user}}</td>
+                </tr>
+                <tr>
+                    <th class="py-3">Car name</th>
+                    <td class="py-3 text-capitalize">{{car_details.name}}</td>
                 </tr>
 
                  <tr>
-                    <th>Company</th>
-                    <td>{{car_details.company}}</td>
+                    <th class="py-3">Company</th>
+                    <td class="py-3 text-capitalize">{{car_details.company}}</td>
                 </tr>
 
                  <tr>
-                    <th>Color</th>
-                    <td>{{car_details.color}}</td>
+                    <th class="py-3">Color</th>
+                    <td class="py-3 text-capitalize">{{car_details.color}}</td>
                 </tr>
 
                  <tr>
-                    <th>Price</th>
-                    <td>{{car_details.prize}}</td>
+                    <th class="py-3">Price</th>
+                    <td class="py-3 text-capitalize">{{car_details.prize}}</td>
                 </tr>
 
                  <tr>
-                    <th>Model year</th>
-                    <td>{{car_details.year}}</td>
+                    <th class="py-3">Model year</th>
+                    <td class="py-3 text-capitalize">{{car_details.year}}</td>
                 </tr>
 
                  <tr>
-                    <th>Fuel type</th>
-                    <td>{{car_details.fuel_type}}</td>
+                    <th class="py-3">Fuel type</th>
+                    <td class="py-3 text-capitalize">{{car_details.fuel_type}}</td>
                 </tr>
 
                  <tr>
-                    <th>Reason</th>
-                    <td>{{car_details.reason}}</td>
+                    <th class="py-3">Reason</th>
+                    <td class="py-3 text-capitalize">{{car_details.reason}}</td>
                 </tr>
             </table>
         </div>

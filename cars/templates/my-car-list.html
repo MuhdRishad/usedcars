@@ -1,15 +1,15 @@
 {%extends 'base.html'%}
 {%block body_block%}
 
-<div class="container-lg">
+<div class="container">
     {%if my_car_list%}
     {%for cars in my_car_list%}
     <div class="row my-5">
 
 <!--        If current user have any cars to sell then it will show here-->
         <div class="col-md-6">
-            <div class="text-center">
-                <img src="{{cars.car_image.url}}" alt="" style="height: 300px">
+            <div class="text-center ">
+                <img src="{{cars.car_image.url}}" alt="" class="mb-4 img-fluid" style="height: 350px; width:80%;">
             </div>
         </div>
         <div class="col-md-6">

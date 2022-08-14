@@ -10,55 +10,59 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8">
             <div class="bg-white rounded my-5 rounded-2 shadow-lg">
                 <div class="bg-dark text-white text-center pt-3 pb-1 rounded-top">
                     <p><b>USER REGISTRATION FORM</b></p>
                 </div>
                 <div class="px-5 py-5">
-                     <form action="" method="post">
-                    {% csrf_token %}
+                    <form action="" method="post">
+                        {% csrf_token %}
 
-                    <div class="mb-3">
-                        <label for="id_first_name" class="mb-1"><b>First Name*</b></label>
-                        <input type="text" name="first_name" id="id_first_name" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_first_name" class="mb-1"><b>First Name*</b></label>
+                            <input type="text" name="first_name" id="id_first_name" class="form-control">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="id_last_name" class="mb-1"><b>Last Name*</b></label>
-                        <input type="text" name="last_name" id="id_last_name" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_last_name" class="mb-1"><b>Last Name*</b></label>
+                            <input type="text" name="last_name" id="id_last_name" class="form-control">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="id_username" class="mb-1"><b>User Name*</b></label>
-                        <input type="text" name="username" id="id_username" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_username" class="mb-1"><b>User Name*</b></label>
+                            <input type="text" name="username" id="id_username" class="form-control">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="id_email" class="mb-1"><b>E-Mail*</b></label>
-                        <input type="email" name="email" id="id_email" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_email" class="mb-1"><b>E-Mail*</b></label>
+                            <input type="email" name="email" id="id_email" class="form-control">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="id_password1" class="mb-1"><b>Password*</b></label>
-                        <input type="password" name="password1" id="id_password1" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_password1" class="mb-1"><b>Password*</b></label>
+                            <input type="password" name="password1" id="id_password1" class="form-control">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="id_password2" class="mb-1"><b>Confirm Password*</b></label>
-                        <input type="password" name="password2" id="id_password2" class="form-control">
-                    </div>
+                        <div class="mb-3">
+                            <label for="id_password2" class="mb-1"><b>Confirm Password*</b></label>
+                            <input type="password" name="password2" id="id_password2" class="form-control">
+                        </div>
 
-                    <div class="d-grid gap-2 col-6 mx-auto pt-3">
-                        <button type="submit" class="btn btn-dark">SIGN UP</button>
-                    </div>
+                        <div class="d-grid gap-2 col-6 mx-auto pt-3 mb-3">
+                            <button type="submit" class="btn btn-dark">SIGN UP</button>
+                        </div>
 
-                </form>
+                        <div class="text-center mb-1">
+                            <p>Have already an account?<a href="{%url 'sign-in'%}" class="text-dark text-decoration-none"><strong>Login here</strong></a></p>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3"></div>
+        <div class="col-lg-3 col-md-2"></div>
     </div>
 </div>
 </body>

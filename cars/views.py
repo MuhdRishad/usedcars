@@ -5,9 +5,21 @@ from cars.forms import SignupForm,SigninForm,ProfileForm,SellCarsForm,PasswordCh
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from cars.models import UserProfile,Cars
-
+from django.contrib import messages
+from django.utils.decorators import method_decorator
 
 # Create your views here.
+
+
+#Dont access without signin
+def signin_required(func):
+    def wrapper(request,*args,**kwargs):
+        if request.user.is_authenticated:
+            return func(request,*args,**kwargs)
+        else:
+            messages.error(request,"Please Login")
+            return redirect("sign-in")
+    return wrapper
 
 
 # This view is for user registration
@@ -40,17 +52,20 @@ class SigninView(FormView):
 
 
 # This function for user logout
+@signin_required
 def signout(request,*args,**kwargs):
     logout(request)
     return redirect('sign-in')
 
 
 # This is the home page view
+@method_decorator(signin_required,name="dispatch")
 class HomeView(TemplateView):
     template_name = "home.html"
 
 
 # This view is for Adding profile for user
+@method_decorator(signin_required,name="dispatch")
 class ProfileView(CreateView):
     model = UserProfile
     template_name = "profile-add.html"
@@ -64,11 +79,13 @@ class ProfileView(CreateView):
 
 
 # For seeing user profile . Also we can see some registration details except password .In this page details not updatable
+@method_decorator(signin_required,name="dispatch")
 class ViewProfileView(TemplateView):
     template_name = "view-profile.html"
 
 
 # For updating user profile details
+@method_decorator(signin_required,name="dispatch")
 class ProfileUpdate(UpdateView):
      template_name = "profile-update.html"
      form_class = ProfileForm
@@ -77,6 +94,7 @@ class ProfileUpdate(UpdateView):
 
 
 # View for selling cars
+@method_decorator(signin_required,name="dispatch")
 class SellCarsView(CreateView):
     form_class = SellCarsForm
     template_name = "sell-car.html"
@@ -90,6 +108,7 @@ class SellCarsView(CreateView):
 
 
 # View for all cars , can see limited data
+@method_decorator(signin_required,name="dispatch")
 class ViewCarsView(TemplateView):
     template_name = "view-cars.html"
 
@@ -101,6 +120,7 @@ class ViewCarsView(TemplateView):
 
 
 # This view for more details about cars
+@method_decorator(signin_required,name="dispatch")
 class ViewCarDetailView(TemplateView):
     template_name = "view-car-details.html"
 
@@ -113,6 +133,7 @@ class ViewCarDetailView(TemplateView):
 
 
 # If Current user added cars to sell , To see them
+@method_decorator(signin_required,name="dispatch")
 class MyCarListView(TemplateView):
     template_name = "my-car-list.html"
 
@@ -124,6 +145,7 @@ class MyCarListView(TemplateView):
 
 
 # View for Updating car details
+@method_decorator(signin_required,name="dispatch")
 class UpdateCarDetails(UpdateView):
     template_name = "update-car-details.html"
     model = Cars
@@ -131,6 +153,7 @@ class UpdateCarDetails(UpdateView):
     success_url = reverse_lazy("my-cars-list")
 
 # This function is for deleting car
+@signin_required
 def remove_car(request,*args,**kwargs):
     car_id = kwargs.get("pk")
     car = Cars.objects.get(id=car_id)
@@ -138,6 +161,8 @@ def remove_car(request,*args,**kwargs):
     return redirect("home")
 
 
+#For Changing password
+@method_decorator(signin_required,name="dispatch")
 class ChangePassword(FormView):
     form_class = PasswordChangeForm
     template_name = "change-password.html"
