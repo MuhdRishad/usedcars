@@ -5,6 +5,14 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* LOGIN SIGNUP */
+.reg-login{
+background: rgb(135,109,151);
+background: linear-gradient(90deg, rgba(135,109,151,1) 0%, rgba(249,172,102,1) 50%, rgba(255,131,129,1) 100%);
+}
+
+
+
 /* NAVBAR */
 .navbar{
     background-color: #1515ffd6;
@@ -29,7 +37,7 @@
 
 /* HOME PAGE*/
 .background{
-    background-image: url('/static/assets/background3.jpg');
+    background-image: url('/static/assets/bgimage.jpg');
     background-size: cover;
     background-repeat: none;
     background-position: center;

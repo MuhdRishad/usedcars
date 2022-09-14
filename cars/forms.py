@@ -42,3 +42,6 @@ class PasswordChangeForm(forms.Form):
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control"}))
     new_password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control"}))
     confirm_password = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
+
+class MessagesForm(forms.Form):
+    message = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))

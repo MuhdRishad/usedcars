@@ -1,17 +1,17 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView,TemplateView,FormView,UpdateView,View
-from cars.forms import SignupForm,SigninForm,ProfileForm,SellCarsForm,PasswordChangeForm
+from cars.forms import SignupForm,SigninForm,ProfileForm,SellCarsForm,PasswordChangeForm,MessagesForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from cars.models import UserProfile,Cars
+from cars.models import UserProfile,Cars,Messages
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 
 # Create your views here.
 
 
-#Dont access without signin
+#Cannot access without signin
 def signin_required(func):
     def wrapper(request,*args,**kwargs):
         if request.user.is_authenticated:
@@ -114,7 +114,7 @@ class ViewCarsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        all_cars = Cars.objects.all()
+        all_cars = Cars.objects.all().exclude(user=self.request.user)
         context["cars"] = all_cars
         return context
 
@@ -180,3 +180,38 @@ class ChangePassword(FormView):
                 return redirect("sign-in")
             else:
                 return render(request,self.template_name,{"form":form})
+
+
+class MessagesView(TemplateView):
+    template_name = "messages.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        car_id = kwargs.get("pk")
+        car = Cars.objects.get(id=car_id)
+        context["car_details"] = car
+        return context
+
+class SentMessagesView(CreateView):
+    model = Messages
+    template_name = "messages.html"
+    form_class = MessagesForm
+
+    def post(self, request, *args, **kwargs):
+        owner_id = kwargs.get("pk")
+        owner = User.objects.get(id = owner_id)
+        user = request.user
+        message = request.POST.get("message")
+        Messages.objects.create(message = message , user = user , reciever = owner)
+        return redirect("home")
+
+def enquiries(request,*args,**kwargs):
+    user_id = request.user.id
+    messages = Messages.objects.filter(reciever = user_id)
+    return render(request , "enquires.html" , {"messages":messages})
+
+def delete_message(request,*args,**kwargs):
+    message_id = kwargs.get("pk")
+    message = Messages.objects.get(id = message_id)
+    message.delete()
+    return redirect("home")

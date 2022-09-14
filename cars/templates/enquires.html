@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Enquiries
+{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+
+<!--            PRINTING MESSAGES IN TABLE-->
+            {% if messages %}
+            {% for msg in messages%}
+            <table class="table">
+                <tr>
+                    <th>name</th>
+                    <th>message</th>
+                    <th>action</th>
+                </tr>
+                <tr>
+                    <td>{{msg.user}}</td>
+                    <td>{{msg.message}}</td>
+                    <td><a class="btn btn-danger" href="{% url 'message-delete' msg.id %}">Delete</a></td>
+                </tr>
+            </table>
+            {% endfor %}
+
+            {% else %}
+            <div class="alert alert-light" role="alert">
+                No Enquiries
+            </div>
+            {% endif %}
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+{% endblock %}

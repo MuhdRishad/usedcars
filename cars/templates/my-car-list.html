@@ -1,6 +1,10 @@
 {%extends 'base.html'%}
-{%block body_block%}
 
+{% block title %}
+User cars
+{% endblock %}
+
+{%block body_block%}
 <div class="container">
     {%if my_car_list%}
     {%for cars in my_car_list%}

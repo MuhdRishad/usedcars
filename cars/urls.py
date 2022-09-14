@@ -15,5 +15,9 @@ urlpatterns = [
     path('user/car/details/<int:pk>',views.ViewCarDetailView.as_view(),name="view-car-details"),
     path('user/cars/list',views.MyCarListView.as_view(),name="my-cars-list"),
     path('user/car/details/update/<int:pk>',views.UpdateCarDetails.as_view(),name="update-car-details"),
-    path('user/car/remove/<int:pk>',views.remove_car,name="remove-car")
+    path('user/car/remove/<int:pk>',views.remove_car,name="remove-car"),
+    path('user/message/<int:pk>', views.MessagesView.as_view(),name="messages"),
+    path('user/message/sent/<int:pk>', views.SentMessagesView.as_view(),name="sent-message"),
+    path('user/enquiries',views.enquiries , name="enquiries"),
+    path('user/message/delete/<int:pk>',views.delete_message , name="message-delete"),
 ]

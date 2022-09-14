@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Messages
+{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+  <div class="row mt-5">
+
+    <div class="col-4"></div>
+
+    <div class="col-4">
+      <form action="{% url 'sent-message' car_details.user.id %}" method="POST">
+        {%csrf_token%}
+        <label for="id_messages">Message</label>
+        <textarea name="message" id="id_messages" cols="30" rows="3" class="form-control"></textarea>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mt-3">Sent</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+
+{% endblock %}

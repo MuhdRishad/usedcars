@@ -29,3 +29,12 @@ class Cars(models.Model):
 
     def __str__(self):
         return self.name
+
+class Messages(models.Model):
+    message = models.TextField(max_length=120)
+    user = models.ForeignKey(User,on_delete=models.CASCADE , related_name="messager")
+    reciever = models.ForeignKey(User,on_delete=models.CASCADE , related_name="reciever")
+
+
+    def __str__(self):
+        return self.message
